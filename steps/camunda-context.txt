@@ -8,6 +8,7 @@ https://docs.camunda.org/manual/7.23/
 - The main content for each subchapter is inside a `<div class="page-content">` (not `.container-fluid`).
 
 **Requirements:**
+- Create a folder camunda-documentation, all files created must be in this folder.
 - For demo purposes, focus only on the first chapter ("Introduction") and its subchapters.
 - Extract the list of subchapters for the chapter from the sidebar navigation or the "Additional Links" section, preserving their order as shown on the live documentation site.
 - For each subchapter, fetch its page and extract only the content inside the `.page-content` div.
@@ -20,7 +21,6 @@ https://docs.camunda.org/manual/7.23/
 - Add logging so the scraping process can be followed. Log any failed fetches or missing subchapters, but continue processing.
 - Iterate and confirm that the content for each subchapter matches what is visible on the live documentation site (e.g., https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/).
 - Use TypeScript.
-- Create a sub-folder to work from called camunda-documentation.
 - Keep iterating and refining until the output matches the visible documentation content for the first chapter and its subchapters.
 - (Optional) Include a validation step to compare the scraped output with the live documentation for accuracy.
 - (Optional) Make the list of chapters/subchapters configurable for future expansion.
