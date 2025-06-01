@@ -5,9 +5,14 @@ In my current repo, can you create a new folder with this "scraper"?
 The camunda manual website has a menu frame on the left side containing the ToC. 
 And the data is displayed in the middle div. I'm interested in the information in this middle div.
 As of now the latest version is 7.23, this is the documentation page: https://docs.camunda.org/manual/7.23
-It would suffice to scrape every page there. You can divide each scraped chapter (e.g Introduction, User Guide) into a separate file. 
-Example partial output: file: 1.Introduction.txt -> (Header) Introduction (content) Welcome to the Camunda Manual!...
-Further down the same file you would find (Chapter) Download (content) Prerequisites ...
+It would suffice to scrape every page there. You can divide each scraped chapter (e.g Introduction, User Guide) into a separate file.
+Meaning we will only end up with 8 text files.
+Example partial output: file: 1.Introduction.txt
+#Introduction 
+Welcome to the Camunda Manual!...
+Further down the same file you would find 
+#Download 
+Prerequisites ...
 And On, please scrape every chapter and its contents.
 I want to use the documentation as additional context to communicate better with Copilot. 
 You can create a simple TypeScript webscraper to achieve this. 
