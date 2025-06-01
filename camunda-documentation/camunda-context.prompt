@@ -5,10 +5,12 @@ Write a TypeScript script to scrape the Camunda 7.23 documentation, starting at 
 1. Target Only the "Introduction" Chapter for Demo Purposes:
    - Navigate to the "Introduction" chapter (https://docs.camunda.org/manual/7.23/introduction/).
    - Extract the list of subchapters from the sidebar or "Additional Links" section, preserving their order as shown on the live site.
+   - Find the link of the subchapter page for each subchapter.
+   - The chapter itself also contains content, this also needs to be extracted.
 
 2. For Each Subchapter:
-   - Fetch the subchapter page (e.g., https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/).
-   - Extract only the content inside the `<div class="page-content">` (ignore `.container-fluid`).
+   - Fetch the content from the subchapter page (e.g., https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/).
+   - Extract only the content inside the `<div class="page-content">`.
    - Remove all navigation, sidebars, headers, footers, edit links, copyright, social links, and any repeated/non-content elements.
    - Ignore images.
    - Clean up whitespace and remove any remaining non-content elements.
@@ -29,25 +31,25 @@ Write a TypeScript script to scrape the Camunda 7.23 documentation, starting at 
 5. Iterate and Refine:
    - Keep iterating and refining until the output for the "Introduction" chapter and its subchapters matches what is visible on the documentation site.
 
-Example output for `1.Introduction.txt`:
+Example output for `1.Introduction.txt` with the first 2 chapters:
 
 ```
 Introduction
+<content of the Introduction chapter>
 
-# Download
+<list of subchapters>
+
+Download
 <content of the Download subchapter>
 
-# Licenses
+Licenses
 <content of the Licenses subchapter>
-
-...and so on for all subchapters.
 ```
 
 Implementation Notes:
 
 - Use TypeScript.
-- Use libraries such as axios (for HTTP requests), cheerio (for HTML parsing), and fs/promises (for file operations).
-- Ensure robust error handling and logging.
-- Structure the code for easy future expansion to other chapters.
+- Keep it simple
+- Use logging to keep trace of the progress
 
 The goal is to have one text file per chapter, each containing the full, clean content of that chapter and all its subchapters, matching what is visible on the documentation site for each page.
