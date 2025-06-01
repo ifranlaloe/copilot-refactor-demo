@@ -1,41 +1,34 @@
 alright here's something new I'd like to try. 
-I'd like to download every documentation page of the Camunda 7 manual. 
-I would like the documentation to be available as a text file. 
-In my current repo, can you create a new folder with this "scraper"? 
-The camunda manual website has a menu frame on the left side containing the ToC. 
-And the data is displayed in the middle div. I'm interested in the information in this middle div.
-As of now the latest version is 7.23, this is the documentation page: https://docs.camunda.org/manual/7.23
-It would suffice to scrape every page there. You can divide each scraped chapter (e.g Introduction, User Guide) into a separate file.
-You can use the div with class "site-menu" to setup up the TOC.
-The content of each chapter can be found in the div with class "container-fluid"
-Example partial output: file: 1.Introduction.txt
+I'd like to download every documentation page of the Camunda 7 manual and save the main content as text files for offline reference and context use.
 
-Introduction 
-Welcome to the Camunda Manual! Camunda is a Java-based framework supporting BPMN
-...
+The Camunda manual website has a menu frame on the left side containing the Table of Contents (ToC), and the main documentation content is displayed in the middle div. I am only interested in the information in this main content area (the div with class "container-fluid").
 
-Chapters:
-Download
-Licenses
-Implemented Standards
-...
+As of now, the latest version is 7.23: https://docs.camunda.org/manual/7.23
 
-#Download 
-content of div "container-fluid" in Download
+Requirements:
+- Create a folder camunda-documentation to work in
+- Scrape every chapter (e.g., Introduction, User Guide) and all of their subchapters, ensuring that for each subchapter, the scraper fetches its own page and extracts only the main content from the `.container-fluid` div.
+- For each chapter, create a single text file (e.g., `1.Introduction.txt`) containing the content of the chapter and all its subchapters, in order. Each subchapter's content should be preceded by a heading (e.g., `#Download`).
+- The scraper must avoid including navigation, repeated blocks, or unwanted elements (such as sidebars, headers, footers, or edit links) in the output. Only the visible documentation content should be included.
+- For each subchapter, extract only the content specific to that subchapter (not the parent or navigation), by finding the heading that matches the subchapter title and collecting all relevant content until the next heading of the same or higher level.
+- Normalize URLs to avoid double prefixes and ensure correct page fetches for all subchapters.
+- Clean up whitespace and remove any remaining non-content elements.
+- Images can be ignored.
+- Use an appropriate sleep between requests to avoid flooding the server.
+- Add enough logging so the scraping process can be followed.
+- Iterate and confirm yourself that the first chapters subchapter matches the content on this page: https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/
+
+Example partial output (file: 1.Introduction.txt):
+
+Introduction
+Welcome to the Camunda Manual! Camunda is a Java-based framework supporting BPMN ...
+
+#Download
+<content of the Download subchapter>
 
 #Licenses
-content of div "container-fluid" in Licenses
+<content of the Licenses subchapter>
 
-Be aware that every subchapter in Introduction such as Download, License, Implemented Standards and so on have its own content.
-My intent is to place the content of a chapter and its subchapters in a single file.
-Meaning we will only end up with 8 text files one for each Chapter. Each file containg the content of the sub chapter belonging to that chapter.
-Please finish one chapter before moving on to the next.
-I want to use the documentation as additional context to communicate better with Copilot. 
-You can create a simple TypeScript webscraper to achieve this.
-Place the scraper into it's own directory called camunda-documentation
-Place the scraped pages into the folder output within camunda-documentation
-Using get requests should be enough since there is no authentication.
-Please use an appropriate sleep between get requests to not flood their servers.
-Images found on the manual pages can be ignored.
-Please run the scraper after you've finished coding it, and also verify that the output folder is being filled correctly.
-Please also add enough logging so I can following along the scraping process.
+...and so on for all subchapters.
+
+The goal is to have one text file per chapter, each containing the full, clean content of that chapter and all its subchapters, matching what is visible on the documentation site for each page.
