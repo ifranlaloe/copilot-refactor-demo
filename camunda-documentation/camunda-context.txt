@@ -1,0 +1,53 @@
+Camunda 7.23 Documentation Scraper Requirements (TypeScript):
+
+Write a TypeScript script to scrape the Camunda 7.23 documentation, starting at https://docs.camunda.org/manual/7.23/. The script should:
+
+1. Target Only the "Introduction" Chapter for Demo Purposes:
+   - Navigate to the "Introduction" chapter (https://docs.camunda.org/manual/7.23/introduction/).
+   - Extract the list of subchapters from the sidebar or "Additional Links" section, preserving their order as shown on the live site.
+
+2. For Each Subchapter:
+   - Fetch the subchapter page (e.g., https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/).
+   - Extract only the content inside the `<div class="page-content">` (ignore `.container-fluid`).
+   - Remove all navigation, sidebars, headers, footers, edit links, copyright, social links, and any repeated/non-content elements.
+   - Ignore images.
+   - Clean up whitespace and remove any remaining non-content elements.
+   - Normalize URLs to avoid double prefixes and ensure correct page fetches.
+
+3. Output:
+   - Create a folder named `camunda-documentation` if it does not exist.
+   - For the "Introduction" chapter, create a file named `1.Introduction.txt` in this folder.
+   - The file should start with the chapter title, then for each subchapter, include a heading (e.g., `# Download`) followed by its clean content, in the order they appear in the sidebar or "Additional Links" section.
+   - Output must be UTF-8 encoded and preserve all Unicode characters.
+
+4. Additional Requirements:
+   - Use a reasonable sleep between requests to avoid flooding the server.
+   - Add logging to track progress, including failed fetches or missing subchapters, but continue processing.
+   - (Optional) Include a validation step to compare the scraped output with the live documentation for accuracy.
+   - (Optional) Make the list of chapters/subchapters configurable for future expansion.
+
+5. Iterate and Refine:
+   - Keep iterating and refining until the output for the "Introduction" chapter and its subchapters matches what is visible on the documentation site.
+
+Example output for `1.Introduction.txt`:
+
+```
+Introduction
+
+# Download
+<content of the Download subchapter>
+
+# Licenses
+<content of the Licenses subchapter>
+
+...and so on for all subchapters.
+```
+
+Implementation Notes:
+
+- Use TypeScript.
+- Use libraries such as axios (for HTTP requests), cheerio (for HTML parsing), and fs/promises (for file operations).
+- Ensure robust error handling and logging.
+- Structure the code for easy future expansion to other chapters.
+
+The goal is to have one text file per chapter, each containing the full, clean content of that chapter and all its subchapters, matching what is visible on the documentation site for each page.
