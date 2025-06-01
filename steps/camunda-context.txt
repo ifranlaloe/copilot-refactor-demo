@@ -21,9 +21,10 @@ https://docs.camunda.org/manual/7.23/
 - Use a reasonable sleep between requests to avoid flooding the server.
 - Add logging so the scraping process can be followed.
 - Iterate and confirm that the content for each subchapter matches what is visible on the live documentation site (e.g., https://docs.camunda.org/manual/7.23/introduction/downloading-camunda/).
-- Keep iterating and refining until the output matches the visible documentation content for the first chapter and its subchapters.
 - Use TypeScript
 - Create a sub-folder to work from called camunda-documentation
+- Keep iterating and refining until the output matches the visible documentation content for the first chapter and its subchapters.
+- Start work immediately.
 
 **Example output for `1.Introduction.txt`:**
 
