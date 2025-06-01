@@ -6,7 +6,7 @@ The camunda manual website has a menu frame on the left side containing the ToC.
 And the data is displayed in the middle div. I'm interested in the information in this middle div.
 As of now the latest version is 7.23, this is the documentation page: https://docs.camunda.org/manual/7.23
 It would suffice to scrape every page there. You can divide each scraped chapter (e.g Introduction, User Guide) into a separate file.
-You can use the div with class "site-menu" to setup up the TOC. Meaning we will only end up with 8 text files.
+You can use the div with class "site-menu" to setup up the TOC.
 The content of each chapter can be found in the div with class "container-fluid"
 Example partial output: file: 1.Introduction.txt
 #Introduction 
@@ -15,6 +15,9 @@ Further down the same file you would find
 #Download 
 Prerequisites ...
 And On, please scrape every chapter and its contents.
+Be aware that every subchapter in Introduction such as Download, License, Implemented Standards and so on have its own content.
+My intent is to place the content of a chapter and its subchapters in a single file.
+Meaning we will only end up with 8 text files one for each Chapter. Each file containg the content of the sub chapter belonging to that chapter.
 Please finish one chapter before moving on to the next.
 I want to use the documentation as additional context to communicate better with Copilot. 
 You can create a simple TypeScript webscraper to achieve this.
