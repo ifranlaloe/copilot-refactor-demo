@@ -17,7 +17,7 @@ Write a TypeScript script to scrape the Camunda 7.23 documentation, starting at 
    - Normalize URLs to avoid double prefixes and ensure correct page fetches.
 
 3. Output:
-   - Create a folder named `camunda-documentation` if it does not exist.
+   - Create a folder named `output` if it does not exist.
    - For the "Introduction" chapter, create a file named `1.Introduction.txt` in this folder.
    - The file should start with the chapter title, then for each subchapter, include a heading (e.g., `# Download`) followed by its clean content, in the order they appear in the sidebar or "Additional Links" section.
    - Output must be UTF-8 encoded and preserve all Unicode characters.
