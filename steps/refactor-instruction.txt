@@ -1,0 +1,1 @@
+I would like to implement the service pattern for the github api that is being used in #file:main.ts  Please implement the API according to best practices but keep it simple. Also make sure the tests still pass.
